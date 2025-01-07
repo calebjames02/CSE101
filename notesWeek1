@@ -1,0 +1,29 @@
+1-6-25
+Labs completely optional
+
+ADTs consist of two things
+1. A set S of mathematical objects, called states
+2. A set of operations on states
+   - Manipulation procedures: alter state
+   - Access functions: return information about a state
+
+Queue of integers
+states: finite sequence of ints
+like
+	[1, 5, 0, -3]
+or
+	[] <- empty sequence
+
+operations
+	manipluation processes
+		enqueue()
+		dequeue()
+	access functions
+		getfront()
+		getlength()
+		isempty()
+
+Small changes to an ADT even changing capitalization makes it a different ADT
+
+Preconditions: Restriction on set of states you can apply operation to
+	Both dequeue and getfront have precondition that the state is not empty
