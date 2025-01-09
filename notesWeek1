@@ -27,3 +27,64 @@ Small changes to an ADT even changing capitalization makes it a different ADT
 
 Preconditions: Restriction on set of states you can apply operation to
 	Both dequeue and getfront have precondition that the state is not empty
+
+1-8-25
+It is the job of the person creating the ADT to make sure the preconditions are met before doing any operations
+When errors happen print error message to stderror and kill program
+	What module
+	What operation
+	What precondition was violated
+fprintf(stderr, "error message");
+Call exit(EXIT_FAILURE); - In stdlib.h
+
+Stack memory is auto allocated and auto freed at end of scope
+Heap memory explicitly allocated and must be deliberately removed
+
+typedef A B;
+	A is an existing type
+	B is the new type being defined
+
+Two ways to make a node
+typedef struct NodeObj{
+	int data;
+	struct NodeObj* next;
+} NodeObj;
+
+# The line below has to come after NodeObj so the compiler knows what a NodeObj and knows how to make a pointer to it
+typedef NodeObj* Node;
+
+The first NodeObj in the declaration is a tag, only necessary if the struct refers to itself
+The second NodeObj at the end of the struct is part B
+	Writing NodeObj references the whole struct declaration
+
+Other way
+typedef struct NodeObj* Node; - This line is allowed because struct is included
+typedef struct NodeObj{
+	int data;
+	Node next; - No need to make a pointer to a NodeObj because Node already exists and is a pointer to a Node Obj
+} NodeObj; - NodeObj already defined in the first line so this technically isn't needed
+
+Can replace the int type for data and replace it with NodeElement
+typedef dataType NodeElement;
+Now anytime you change the above it changes what data the Node is holding
+
+You can't do data hiding as easily as in C++
+The way to do it in C is to put the declaration of a queueObj into the C file and the queue obj into the header file.
+In general anything that is in the .h file is public, anything in the .c file and not in the .h file is private
+
+The header file is the front panel of an ADT
+The C file is what is inside the black box
+
+Anything preceded by a # is a preprocessor directive
+First thing run in program and they are just a text substitution
+#ifndef name - Check if this is defined yet
+#define name - If above isn't define do everything between this and the endif
+
+#endif
+
+assert(pointer != NULL)
+0th precondition check that the pointer to the ADT isn't NULL
+
+Nominal execution is execution if all precons are met
+Do not bury nominal execution inside a conditional
+Check precons and then do nominal execution
