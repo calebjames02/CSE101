@@ -83,7 +83,7 @@ First thing run in program and they are just a text substitution
 #endif
 
 assert(pointer != NULL)
-0th precondition check that the pointer to the ADT isn't NULL
+0th precondition check that any pointer isn't NULL
 
 Nominal execution is execution if all precons are met
 Do not bury nominal execution inside a conditional
