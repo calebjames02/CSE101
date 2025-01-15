@@ -1,0 +1,49 @@
+1/15/25
+A Graph G=(V, E) where
+	V = set of vertices
+	E = set of edges between the vertices (unordered set of pairs of vertices)
+
+Ex.
+V = {1, 2, 3, 4, 5, 6}
+E = {{1, 2}, {3, 4}} or {12, 34} <- the second one works as long as the two vertices are distinct
+
+An isomorphism is a mapping or function (symbol fi)
+V(G1)->V(G2) such that {x, y} is in the edge set of (G1) this is true if and only if {fi(x), fi(y)} is an element
+in the edge set of G2
+All vertices point of one graph can be replaced with the vertices of another graph and the edges are the same
+	The visual representation may differ, but the vertices and edges are interchangeable
+
+How to check for isomorphism
+Check to see if have same number of vertices
+Check to see if have same number of edges
+And other things
+No finite set of simple checks you can do to prove two different graphs are isomorphic
+
+Our definition of graph does not allow a vertex to have an edge with itself, it also does not allow
+	parallel edges (an edge pointing from vertex a to b and from vertex b to a)
+Graphs that allow the above are multigraphs
+
+Adjacency can be between edges and vertices (they are both connected)
+Degree of a vertex is how many edges are connected to it
+Handshake Lemma
+	Total degree of all vertices should be two times the number of edges
+	Also: number of odd degree vertices in a graph must be even
+
+Definitions:
+an x-y walk is a sequence of vertices x = v0, v1, v2, v3, ... vk=y such that the pair of {vi-1, vi} is an edge
+	In other words every pair of consecutive vertices in the list are adjacent
+	The length of the walk is k, the number of edges traversals
+	if x = y, then the walk is closed. if length = 0, then the walk is trivial
+	a walk in which no edge is traversed multiple times is called a trail
+	a trail in which no vertex is visited more than once is called (unless the trail is closed) is called a path
+A non trivial closed path is called a cycle
+	Forests are graphs that have no cycles
+
+A graph is called connected if and only if for every pair of vertices there is an x-y path, otherwise it is called disconnected
+
+A subgraph H of G is a graph H=(V', E') such that V' is a subset of the vertex set of G and E' is a subset of the edge set of G
+
+A conneced component in a Graph G is a subgraph H of G such that
+	1) H is connected
+	2) H is maximal with respect to property one
+Maximal means that there is no larger subgraph that contains the smaller subgraph that is also connected
