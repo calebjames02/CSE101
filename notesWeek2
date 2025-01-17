@@ -47,3 +47,76 @@ A conneced component in a Graph G is a subgraph H of G such that
 	1) H is connected
 	2) H is maximal with respect to property one
 Maximal means that there is no larger subgraph that contains the smaller subgraph that is also connected
+
+1/17/25
+A graph G is called acyclic (or a forest) if and only if it contains no cycles
+A graph that is both acyclic and connected is called a tree
+A forest is a graph of multiple trees put together
+In a tree the number of edges is always one minus the number of vertices
+
+Treeness theorem
+Let G = (V, E) be a graph with |V| = n and |E| = m
+The following statement are equivalent
+a) G is a tree (i.e. connected and acyclic).
+b) G contains a unique x-y path for any x, y that are in the set V.
+c) G is connected, but if any edge is removed, the resulting graph G − e is disconnected.
+d) G is connected, and m = n − 1.
+e) G is acyclic, and m = n − 1.
+f) G is acyclic, but if any edge is added (joining two non-adjacent vertices), then the resulting graph G + e contains a unique cycle.
+
+(i) G is connected
+(ii) G is acyclic
+(iii) |E| = |V| - 1
+If two of those hold then the third must hold as well
+
+Representations of Graphs
+n = |V(G)| - Num of vertices in G
+m = |E(G)| - Num of edges in G
+Incidence Matrix: n x m
+Adjacency Matrix: n x n
+Adjacency List: - How we will represent graphs
+	Array of n lists
+Ex.
+adj(G) when n = 4
+	1: 2 3
+	2: 1 3 4
+	3: 1 2 4
+	4: 2 3
+Ex. digraph, n = 4
+adj(D) - This digraph has the same edges as the above graph but because of the directed edges, the adjacency list differs
+	1: 2 3
+	2: 3 4
+	3: 4
+	4: 
+
+If you erase all directed edges from a digraph then you get the underlying graph of it
+A digraph D = (V, E) if and only if
+	V is not empty
+	E is a subset of V cross V - This allows self loops in digraphs even though not allowed in regular graphs
+This happens because of the directionality of a digraph
+The set {x, y} and {y, x} are the same but the ordered pair (x, y) and (y, x) are different
+	Graphs use sets and digraphs use ordered pairs which is what allows digraphs to have self loops and two edges between two vertices
+
+Because you can add two different edges between two vertices in a digraph if it is the second edge drawn between the two vertices you don't increment the number of edges in the ADT
+we say y from the vertex set of G is reachable from x in the vertex set of G if and only if there exists
+	(1) an x-y path (undirected case)
+	(2) a directed x-y path (directed case)
+
+delta(x, y) = minimum length of an x-y path if y is reachable from x, infinity otherwise
+	Distance from x to y
+
+Single Source Shortest Path (SSSP) Problem:
+	Given a graph G (or digraph) G, and s is a vertex of G called the source, determine
+	1. Find the length of a minimum length path to every other vertex in G
+	2. if the distance between s and a vertex is not infinite (s is reachable from x), find a shortest s-x path
+
+Breadth First Search (BFS)
+	Solves SSSP
+	Uses vertex attributes
+		color[x] = white, gray, or black
+			white = undiscovered
+			gray = discovered, but not all neighbors discovered
+			black = done, discovered all neighbors
+		distance[x] = estimate of the distance between s and x
+		parent[x] encodes shortest paths - Sometimes called predecessor
+		Also uses FIFO queue: Q and adjacency list representation
