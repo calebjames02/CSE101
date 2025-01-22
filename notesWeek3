@@ -1,0 +1,15 @@
+1/22/25
+For BFS start at source, then find vertices at distance 1, then find vertices at distance 2 ...
+Uniformly expanding to find new vertices
+
+distance[x] = estimate of edge traversals between s and x
+parent[x] = encodes shortest paths
+
+Predecessor tree is creating by drawing each vertex pointed to by their parents
+The depth of each vertex is the distance between it and the source vertex
+If at depth 0, 0 length, if at depth 3, 3 length
+Single slash through a drawn vertex means it is gray, no slash means it is white
+
+Will be asked to draw predecessor graph ON EXAM!!
+The shortest path that you get from BFS is decided by the order in which the adjacency list is processed
+Could be asked to give order in which vertices are entered and removed from the queue and the distances
