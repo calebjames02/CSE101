@@ -13,3 +13,48 @@ Single slash through a drawn vertex means it is gray, no slash means it is white
 Will be asked to draw predecessor graph ON EXAM!!
 The shortest path that you get from BFS is decided by the order in which the adjacency list is processed
 Could be asked to give order in which vertices are entered and removed from the queue and the distances
+
+1/24/25
+Depth First Search
+Vertex attributes: where x is a subset of the vertices of G
+color[x]: white, gray, or black
+p[x]: parent/predecessor
+d[x]: discover time
+f[x]: finish time
+
+time = range from 0 to 2n
+
+BFS and DFS have a version with and without a source
+We did sourced for BFS and unsourced for DFS
+Unsourced finds all vertices in the graph, where as the sourced version finds every vertex connected to a given vertex
+
+The result from calling DFS is called a DFS forest / Predecessor subgraph
+	Called a DFS forest because there could be more than one tree
+	There are as many trees as there are vertices with NIL parents
+By the time DFS is done, the color of everything will be black
+If it is not found in the recursive visit call, it will be found in the main loop
+Every vertex is visited exactly once
+Finish and discover times of vertices can be found by just tracing the outside of the forest
+Discover time written on left, and finish time written on right
+
+Theorem: If G is a graph (undirected), then the number of connected components of G equals the number of trees in the DFS forest after DFS(G)
+
+Definition: Predecessor subgraph
+	G_p = (V_p, E_p)
+	V_p = V(G)
+	E_p = {(P[x], x) | (such that) P[x] != NIL}
+		Order pair for a digraph, and an unordered pair if it is a graph
+
+Classification of Edges
+When running DFS its possible to classify each edge you run into
+There are four types of edges
+	1. Tree edges
+		Belong to the DFS forest
+	2. Back edges
+		Join a vertex to an ancestor (something further above in the predecessor graph)
+	3. Forward edges
+		Join an ancestor to a descendant (something further down in the predecessor graph that isn't from parent to child, i.e. going down more than one vertex)
+	4. Cross edges
+		Everything else
+			Cousin to cousin in same tree (edge between two vertices that have common ancestor)
+			Tree to tree
