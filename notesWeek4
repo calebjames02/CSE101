@@ -1,0 +1,62 @@
+1/27/25
+When looking at predecessor subgraph
+Every time you are going down you are discovering a new vertex, and each time you go up you are finishing
+
+Modify DFS to classify the types of edges as you go
+See problem 22.3 problem 12 3rd edition for hints
+if color[y] == white
+	p[y] = x
+	Visit(y)
+	// tree edges
+else if color[y] == gray
+	
+else if color[y] == black
+	
+
+
+Topological Sort
+A graph is acyclic if it has no cycles
+	A cycle is a path where you can start at one vertex and end at the same vertex
+Graphs are either cyclic or not acyclic
+
+Lemma:
+A digraph G is acyclic if and only if DFS(G) yields no back edges
+	Ordering of edges run in DFS does not matter
+
+Changing name of vertices can change the classification of edges, however it will will not change if the graph is acyclic or not acyclic
+
+Definition:
+An acyclic digraph is called a DAG (directed acyclic graph)
+Let G be a DAG
+	A topological sort of the vertex set of G is a linear ordering on the vertex set of G [V(G)], such that if the ordered pair (x,y) is in the edge set of G then x appears before y in the linear order
+	When you draw in the edges on this graph, they all go from left to right
+	There could possibly be more than one topological sort for a graph
+
+The topological sort of a scheduling problem is the schedule you can use to complete the tasks
+
+Topological sort algorithm is DFS
+To find a topological sort
+	Run DFS(G), as vertices finish push them onto a stack: S
+	When done, S is the topological sort from top to bottom
+When there are multiple topological sorts, you get one of them based on what order the loop goes through the vertices in DFS
+
+Strongly Connected Components
+Let G be a digraph. We say y that is a vertex in v is reachable from x that is a vertex of v if and only if G contains a directed x-y path
+
+Definition:
+We call G strongly connected if and only if for all x,y in the vertex set of G, x is reachable from y and y is reachable from x and vice versa
+
+Definition:
+A subset U of the vertex set of G is strongly connected iff for all x,y in U, x is reachable from y and y is reachable from x and vice versa
+
+Definition:
+A subset U ov the vertex set of G is a strongly connected component (SCC) of G iff
+	1) U is strongly connected
+	2) U is maximal with respect to property 1
+
+To get this SCC
+	Run DFS(G), as vertices finish put them onto a stack S
+	Compute the G^T (G transpose)
+	Run DFS(G^T), execute the main loop in stack order given by S
+When you are done you have a bunch of vertices in trees
+The trees are the SCCs
