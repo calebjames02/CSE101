@@ -60,3 +60,19 @@ To get this SCC
 	Run DFS(G^T), execute the main loop in stack order given by S
 When you are done you have a bunch of vertices in trees
 The trees are the SCCs
+
+1/29/25
+Midterm will covering everything through today
+
+To get correct order for SCC read out the list after running DFS on the transpose based on the list from the first
+	run of DFS and go from bottom to top of the stack and each SCC ends when a vertex has parent NIL
+
+Definition
+GSCC is the digraph with V={SCC of G} (vertex set = SCC of G}
+E = {(i, j) | x is an element of SCCi, y is an element of SCCj, and (x,y) is an edge in the edge set of G}
+A GSCC will always be acyclic
+The GSCC will show the topoligcal sort of the Graph
+
+To find order for the SCC output for pa3
+Walk up the stack until you find NIL
+	Then print going down from the NIL
