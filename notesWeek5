@@ -1,0 +1,109 @@
+2/3/25
+Way to calculate runtime is to calculate how many basic operations are done in the algorithm and multiply that by how long the operations take
+n is the size of an instance of a problem, commonly an array or list of data to be operated on
+
+op1
+for i=1 to 10
+ op2
+ for j=1 to 10
+ op3
+ for k=1 to 10
+ op4
+
+op1 = 1 time
+op2 = 10 times
+op3 = 100 times
+op4 = 1000 times
+
+Just concentrate on op4, ignore the rest because it is run a lot more times than any other operations
+You want to find out what the worst an algorithm will do is
+
+How much do you lose by throwing away the lower powered terms?
+The fastest growing term grows so fast it makes the other terms not matter in the grand scheme of things
+When testing algorithms you don't want to be dependent on the speed of computers
+Want a uniform way of testing algorithms
+
+Basic steps
+(1) Choose a basic operation that appears within the body of the innermost loop.
+(2) Count the number of executions of this operation as a function of the input size n
+(3) Simplify the function found in (2) by dropping all lower order terms, and replacing the
+coefficient of the highest order term by 1.
+
+Asymptotic growth rate is the growth rate of runtime of a function at infinity
+
+Definition
+We say f(n) is O(g(n)) iff there exist positive numbers B > 0 and n0 > 0 such that
+	f(n)/g(n) <= B, for all n >= n0
+
+g(n) is an asymptotic upper bound for f(n)
+
+There is some point on the right access n0 that the ratio holds true past
+We don't care what happens before B, only what happens after
+
+f(n) = 2n + 5, g(n) = n
+f(n)/g(n) = 2 + 5/n
+
+The above is <= 3 for all n >= 5
+B = 3, n0 = 5
+
+n0 and B are not unique, there are many pairs of numbers you can use that would hold true for it
+
+This is a way of removing constants to get the true big 0 of an algorithm
+
+In fact: if f(N) is a d^th degree polynomial, then f(n) = O(n^d)
+Definition
+We say f(n) = omega(g(n)) iff there exist B > 0, n0 > 0 such that
+	B <= f(n) / g(n) for all n >= n0
+Opposite of big O
+g(n) is an asymptotic lower bound of f(n)
+
+f(n) = 6n^3 + 4n, g(n) = 2n^2
+f(n)/g(n) = 3n + 2/n
+The above is >= 7 for all n >= 2
+B = 7, n0 = 2
+
+Fact
+If f(n) is a d^th degree polynomial and g(n) is an e^th degree polynomial, then 
+	d <= e implies that f(n) = O(g(n))
+and
+	e <= d implies that f(n) = OMEGA(g(n))
+
+Definition
+f(n) is THETA(g(n)) iff there exist constants B1 > 0, B2 > 0, n0 > 0 such that
+	B1 <= f(n)/g(n) <= B2 for all n >= n0
+g(n) is a tight asymptotic bound for f(n)
+f(n) is O(g(n)) and OMEGA(g(n))
+
+Ex
+f(n) = 5n^2 + 11n - 24, g(n) = n^2
+4 <= (5n^2 + 11n - 24) / n^2 <= 6
+for all n >= 8
+
+Fact
+if f(n), g(n) are polynomails than deg(f) <= deg(g) implies f = O(g)
+										  >= implies f = OMEGA(g)
+										  == implies f = THETA(g)
+
+Analogy
+x <= y is analogous to f(n) = O(g(n))
+x >= y is analogous to f(n) = OMEGA(g(n))
+x == y is analogous to f(n) = THETA(g(n))
+x < y is ?
+x > y is ?
+
+Definition
+f(n) = o(g(n)) iff
+lim f(n)/g(n) = 0
+n->inf
+
+we say g(n) is a strict asymptotic upper bound for f(n)
+
+note
+f(n) = o(g(n)) if f(n) = O(g(n))
+
+Ex
+f(n) = ln(n), g(n) = n
+lim f(n)/g(n) = ln(inf) / inf = inf / inf (L Hospital's) = (1 / n) / 1) = 1 / n = 1 / inf = 0
+n->inf
+
+this proves that ln(n) = o(n)
