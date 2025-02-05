@@ -88,8 +88,8 @@ Analogy
 x <= y is analogous to f(n) = O(g(n))
 x >= y is analogous to f(n) = OMEGA(g(n))
 x == y is analogous to f(n) = THETA(g(n))
-x < y is ?
-x > y is ?
+x < y is analogous to f(n) = o(g(n))
+x > y is analogous to f(n) = little omega(g(n))
 
 Definition
 f(n) = o(g(n)) iff
@@ -107,3 +107,60 @@ lim f(n)/g(n) = ln(inf) / inf = inf / inf (L Hospital's) = (1 / n) / 1) = 1 / n 
 n->inf
 
 this proves that ln(n) = o(n)
+
+2/5/25
+ln(n) = o(n^k) for k > 0
+Proof
+lim = ln(n) / n^k = inf / inf (L Hospital's) = (1/n) / k*n^(k - 1) = 1/k * lim 1/n^k = 0
+n->inf                                                                     n->inf
+Same for log_b(n)
+The different base adds an additional constant, but doesn't change the result
+Any log will be smaller than any polynomial of any power
+
+Ex
+f(n) = n^k (k >= 0), g(x) = e^n
+lim n^k / e^n = inf / inf (L Hosp) = k / n lim n^(k - 1) / e^n
+n->inf                                     n->inf
+
+Need to do L Hospital's ceil(k) times
+Eventually you end up with a constant times 1 / e^n which is 0
+Exponentials grow faster than any polynomial
+
+Ex
+f(x) = a^n, g(n) = b^n, 1 < a < b
+lim a^n / b^n = (a/b)^n = 0
+n->inf
+Raising a number less than 0 to a large power is just 0
+
+a^n = o(b^n)
+All the exponential functions are stratified into a continuoum of growth rate
+Bigger base equals faster growth rate
+
+Definition
+f(n) = little omega(g(n)) iff lim (f(n)/g(n)) = inf
+                              n->inf
+
+f(n) = O(g(n) iff g(n) = OMEGA(f(n))
+f(n) / g(n) <= B iff g(n) / f(n) >= 1 / B
+for n > n0
+
+Note
+If f(n)=o(g(n)) then, f(n) = O(g(n)) but not vice versa
+There is a constant B > 0 such that f(n) / g(n) <= B for all n >= n0
+
+Also: transitivity
+f(n) = O(g(n)) and g(n) = O(h(n))
+this implies that f(n) = O(h(n))
+
+For any C > 0
+c * f(n) = O(f(n))
+c * f(n) = OMEGA(f(n))
+c * f(n) = THETA(f(n))
+If f(n) = o(g(n)), then c * f(n) = o(g(n))
+If f(n) = omega(g(n)), then c * f(n) = omega(g(n))
+
+
+Given that alpha and beta are a real number
+n ^ alpha = { o(n^beta) if alpha < beta     }
+			{ THETA(n^beta) if alpha = beta }
+			{ omega(n^beta) if alpha > beta }
