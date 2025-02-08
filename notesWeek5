@@ -164,3 +164,32 @@ Given that alpha and beta are a real number
 n ^ alpha = { o(n^beta) if alpha < beta     }
 			{ THETA(n^beta) if alpha = beta }
 			{ omega(n^beta) if alpha > beta }
+
+
+2/7/25
+Analyzing Selection Sort(A)
+A = [A1, A2, ..., An]
+1. n = length(A)
+2. for i = 1 to n - 1
+3.		imin = i
+4.		j = i + 1 to n
+5.			if A_j < A_imin
+6.				imin = j
+7.		Swap A_i with A_imin
+
+basic op: comparison of array elements
+# of comparisons = (n - 1) + (n - 2) + ... + 1
+	Sum of positive integers from 1 to n - 1
+	= n(n - 1) / 2 = (1/2)n^2 - (1/2)n = THETA(n^2)
+
+Worst case runtime = max number of comparisons
+Best case runtime = min number of comparisons
+Average case runtime = average number of comparisons
+
+BFS
+Let n = |V(G)|, m = |E(G)|
+Initialization = THETA(n)
+Queue Operations = THETA(2n) = THETA(n)
+Inner For Loop = 2m (undirected), m (directed) = THETA(m)
+
+Total cost = THETA(n + m)
