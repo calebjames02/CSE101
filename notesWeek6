@@ -1,0 +1,6 @@
+2/10/25
+Can we use namespace std?
+Where are front and back dummy?
+
+Only difference between struct and class in C++ is that class has defualt of private variables and struct has
+	default of public variables
