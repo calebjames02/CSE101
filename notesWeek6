@@ -4,3 +4,26 @@ Where are front and back dummy?
 
 Only difference between struct and class in C++ is that class has defualt of private variables and struct has
 	default of public variables
+
+2/12/25
+&
+Bitwise and - C/C++
+Address of - C/C++
+References operator - C++ only
+A reference variable is an alias for some other variable, similar to a pointer but doesn't use pointer syntax
+	Like a pointer that doesn't need to be dereferenced
+int x;
+int y = &x;
+int& r = x;
+	Reference to int
+	Must be initialized at the time it is declared
+x = 6;
+x++;
+(*p)++; - Increment x
+r++; - Increments x
+	This is mostly pointless to do it this way, however it is used to pass variables to functions by reference
+		without having to make a pointer of it
+
+Const is used to create syntax errors to catch if you modify things in functions where you shouldn't
+
+Use nullptr instead of NULL
