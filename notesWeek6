@@ -27,3 +27,20 @@ r++; - Increments x
 Const is used to create syntax errors to catch if you modify things in functions where you shouldn't
 
 Use nullptr instead of NULL
+
+2/14/25
+For = operator
+Create a copy of given list
+Swap pointers from the copy to the self object
+	std::swap(front, temp.front);
+	...
+Constructor called by default
+	List L - Constructor called here
+Copy constructor
+	List S
+	List L = S
+
+Assignment operator
+	List L
+	List S
+	L = S
