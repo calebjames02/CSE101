@@ -1,0 +1,14 @@
+2/21/25
+If largest digit is negative and nothing to borrow from flip the sign of each of the number and bring that negative sign out and justify it with signum
+Return -1 when this happens to caller to signal that this happened
+
+For multiplication
+Go digit by digit in second number
+Scalar mult first number by digit from second number
+Normalize the result
+Shift the result accordingly and add it to the answer
+
+Shift
+Scalar mult
+Add
+Normalize
