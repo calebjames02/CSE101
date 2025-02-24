@@ -1,0 +1,44 @@
+2/24/25
+BSTs
+Keys must be unique, values don't have to be
+
+Leaf - node with no children
+All nodes that are not leaves are internal nodes
+
+NIL is one node that exists that all pointers point to if they do not point to another node
+NIL parent and child nodes can point to NIL, or you can set pointer to NULL or nullptr
+
+Inorder traversal prints the BST starting from a given node by 
+	Print left
+	Print current
+	Print right
+
+Preorder
+	Current
+	Left
+	Right
+
+Post order
+	Left
+	Right
+	Current
+
+Can reconstructor from preorder or post order
+To reconstruct from preorder
+Look at first node
+Any nodes following that are smaller are on the left
+Any nodes following that are larger are on the right
+Place first smaller node as left child and first larger node as right child
+Keep going from the new nodes
+
+Postorder traversal is used to free all the nodes
+
+Tree search
+If NIL or val == search - can't reverse this or it would segfault because NIL does not have a key
+	Return pointer to current node
+If val < search
+	Recurse right
+If val > search
+	Recurse left
+
+Height of a tree is the depth fo the deeest leaf (how many nodes away the frathest node is away from the root
