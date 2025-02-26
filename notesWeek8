@@ -63,3 +63,7 @@ Case 3:
 	Do you need to check to see if you are deleting the root?
 
 	You could use predecessor(Z) instead of successor(Z) and it would work exactly the same, just an arbitrary chocie
+
+For ranking asymptotic growth rates
+In general
+	Logs smallest, then polynomials, then exponentials
