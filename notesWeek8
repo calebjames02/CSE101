@@ -42,3 +42,24 @@ If val > search
 	Recurse left
 
 Height of a tree is the depth fo the deeest leaf (how many nodes away the frathest node is away from the root
+
+2/26/25
+Successor is next node after a current node to be printed in an in order tree walk
+
+Deletion
+3 cases to consider
+Case 1:
+	Z is a leaf (no children)
+	Sever the parent child relationship between Z and it's parent and then delete Z
+Case 2:
+	Z has one child (either a left child or a right child)
+	Splice Z out of 'local list'
+	Have Z's child point to Z's parent and Z's parent point to Z's child then delete Z
+Case 3:
+	Z has two children
+	Let Y = successor(Z) (Y can have no left child, this has to be true for Y to be successor to Z)
+	Splice out Y, and splice it into the position that Z occupies
+	Could I just set val of X to val of Y and then delete Y?
+	Do you need to check to see if you are deleting the root?
+
+	You could use predecessor(Z) instead of successor(Z) and it would work exactly the same, just an arbitrary chocie
