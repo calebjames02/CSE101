@@ -40,3 +40,14 @@ RBT properties
 5. for any node x, every path descending from x to a leaf contains the same number of black nodes
 
 The black height of x, bh(x) is the # of black ndoes in a descending path from x to a leaf, not counting x itself
+
+3/7/25
+A RBT with n internal (i.e. non-nil) nodes, and height h satisfies
+	h <= lg(n + 1)
+any Binary Tree satisfies
+	h >= floor(log(n))
+Therefore, for a RBT
+	floor(log(n)) <= h <= log(n + 1)
+As such, all algorithms have worst case runtime h which is of logarithmic time
+
+Right and left rotate do not preserve RBT properties, but they are also necessary to satisfy some of the properties
