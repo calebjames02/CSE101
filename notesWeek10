@@ -1,0 +1,39 @@
+3/10/25
+Heaps and priority queues
+A priority queue is an ADT that maintains a finite set S of records, and each record has an attribute called a key
+
+In dictionary, a key uniquely identifies the corresponding data (i.e. bank account number)
+In priority queue, a key defines how important the record is (i.e. bank balance)
+Priority queue maintins them in a way to prioritize the records with the highest priority
+
+Two types of priority queues: Max PQ and min PQ
+Max PQ has these operations
+	Insert (S, x)
+	Max(S) - Pure access function
+	ExtractMax(S) - Combination access and delete function that returns and deletes record with maximum key
+	IncreaseKey(S, x, k) - Changes key x to k if k > key[k]
+
+Defintion: 
+A complete binary tree (CBT) is a binary tree where all leaves have the same depth, and all internal nodes have two children
+An almost complete binary tree (ACBT) is a binary tree that is filled at all levels except possibly the deepest level
+	The deepest level would be filled from left to right
+The number of nodes in an ACBT of height h must satisfy the following inequality, 2^h - 1 < n <= 2^(h + 1) - 1
+	2^h <= n < 2^(h+1)
+	h <= log_2(n) < h + 1
+	h = floor(log_2(n))
+
+Heaps
+Preferred data structure to underly PQ
+
+Binary Heap (Max, min)
+A binary heap is an array object that represents an ACBT
+The array has two attributes
+	Length[A] - Total storage capacity for nodes
+	Heap size[A] - Number of current nodes
+Helper functions
+	Parent(i) = floor(i / 2), for i >= 2
+	Left(i) = 2i
+	right(i) = 2i + 1
+Heap properties
+	Max heap property: A[Parent(i)] >= A[i]
+	Min heap property: A[Parent(i)] <= A[i]
