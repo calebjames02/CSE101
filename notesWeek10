@@ -37,3 +37,36 @@ Helper functions
 Heap properties
 	Max heap property: A[Parent(i)] >= A[i]
 	Min heap property: A[Parent(i)] <= A[i]
+
+3/12/25
+Max Heap Algorithms
+Heapify - Recursive function that fixes heap properties starting from a certain node
+	Causes heap properties to be satisfied at one specific node
+	Call heapify on whatever node you swap with in current iteration of heapify
+	Worst case runtime: floor(log_2(n)) or THETA(log(n))
+BuildHeap - Constructor, takes an unordered array and orders it in a way to satisfy max heap property
+	Call heapify on the root of an unordered array
+	Runtime: THETA(n)
+HeapSort
+	First call BuildHeap, then the array is almost sorted
+	Swap first and last element and exclude last element so the largest element is now at the end of the array
+	One call to heapify will fix this and you can rinse and repeat until heap only has one element left and the array is now sorted
+	Runtime - THETA(nlog(n))
+
+PQ Operations
+HeapMaximum
+	Return largest key, ie the root
+	THETA(1)
+HeapDeleteMax
+	Swap root with right most leaf, decrement heap size, call heapify on root
+	THETA(log(n))
+HeapExtractMax - Pure manipulation procedure
+	Saves maximum, deletes it, then returns what it saved
+	THETA(log(n))
+HeapIncreaseKey
+	First figure out if given key is bigger than the key at the given index
+		If it is then increase the key to the desired value
+		Might create problems above that element you just changed
+		While not at root and you have a violation between current element and it's parent
+			Swap current element and it's parent then repeat
+	THETA(log(n))
