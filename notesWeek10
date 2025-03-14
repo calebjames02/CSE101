@@ -38,6 +38,7 @@ Heap properties
 	Max heap property: A[Parent(i)] >= A[i]
 	Min heap property: A[Parent(i)] <= A[i]
 
+
 3/12/25
 Max Heap Algorithms
 Heapify - Recursive function that fixes heap properties starting from a certain node
@@ -54,7 +55,7 @@ HeapSort
 	Runtime - THETA(nlog(n))
 
 PQ Operations
-HeapMaximum
+HeapMaximum/Minimum
 	Return largest key, ie the root
 	THETA(1)
 HeapDeleteMax
@@ -70,3 +71,59 @@ HeapIncreaseKey
 		While not at root and you have a violation between current element and it's parent
 			Swap current element and it's parent then repeat
 	THETA(log(n))
+
+
+3/14/25
+Single source shortest path problem in weighted graphs
+BFS solves this, but doesn't work on weighted graphs
+Weighted graph G = (V, E, w)
+	Where w is a function from the edge set E to the real numbers
+Weight of a path
+	path = sequence of connected vertices
+	Weight of a path = the sum of the weight of all edges in the path
+S(x, y) - Shortest path between x and y
+	Weight of a minimum path between the vertices x and y, so long as y is reachable from x
+	Infinity in the case where y is not reachable from x
+
+SSSP
+Given a source vertex s
+	2. determine delta(s, x) for all x in the vertex s
+	2. For each x that is reachable from s, find a shortest s-x path
+Two algorithms for this
+Belman-Ford
+Dijkstra (restricts to only positive edge weights)
+
+Both find min-weight walks between two vertices (in a walk you can visit the same vertex/edge multiple times, which you can't do in a path)
+Problem
+Negative weight cycle reachable from the source
+Can stay on the cycle infinitely to reach negative infinity
+Dijkstra doesn't care because it doesn't accept negative weights
+Belman-Ford doesn't allow negative weight cycles reachable from the source
+	Returns true if there is no negative weight cycle reachable from the source
+
+As in BFS, we have parent(x) and distance(x)
+	distance(x) = distance estimate between s and x
+
+Initialize(G, s)
+	for all vertices in the vertex set,
+		set distance(x) to inf
+		set parent(x) to nil
+	set distance(source) to 0
+Relax(x, y)
+	if(distance[y] > distance[x] + w(x, y)
+		d[y] = d[x] + w(x, y)
+		p[y] = x
+	Trying to improve distance estimate to y
+	What if taking another path that the one already taken is better, then change the chosen path
+
+Dijkstra
+	Initialize(G, s)
+	S = { } - the set of discovered vertices
+	Q = V(G) - create a Min Priority Queue with key[x] = d[x]
+	while Q is not empty
+		x = ExtractMin(Q)
+		S = S union {x}
+		for all y in adj[x]
+			Relax(x, y)
+
+	You don't need the stuff with S, it just makes it easier to prove its correctness
